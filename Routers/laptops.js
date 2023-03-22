@@ -17,9 +17,9 @@ router.get("/:id", (req, res) => {});
 // Creating One
 router.post("/", async (req, res) => {
   const laptop = new Laptop({
-    modelName: req.body.modelName,
-    brandName: req.body.brandName,
-    price: req.body.price,
+    // modelName: req.body.modelName,
+    // brandName: req.body.brandName,
+    // price: req.body.price,
   });
 
   try {
