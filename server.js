@@ -4,6 +4,10 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const cors = require("cors");
+
+// For fetching this as API we need to use CORS
+app.use(cors());
 
 //Have to use body-parser to be able to read the body of the request
 app.use(bodyParser.json());
