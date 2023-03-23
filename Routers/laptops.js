@@ -31,11 +31,32 @@ router.post("/", async (req, res) => {
 });
 
 // Updating One
-router.patch("/:id", (req, res) => {});
+router.patch("/:id", async (req, res) => {
+  try {
+    const updatedLaptop = await Laptop.updateOne(
+      { _id: req.params.id },
+      {
+        $set: {
+          modelName: req.body.modelName,
+          brandName: req.body.brandName,
+          price: req.body.price,
+        },
+      }
+    );
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
 
 // Deleting One
-router.delete("/:id", (req, res) => {
+router.delete("/:id", async (req, res) => {
   // How to delete a laptop from the database
+  try {
+    const removedLaptop = await Laptop.remove({ _id: req.params.id });
+    res.json(removedLaptop);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 module.exports = router;
