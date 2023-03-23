@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const laptopSchema = new mongoose.Schema({
+  //add a new value to the database
   modelName: {
     type: String,
     required: true,

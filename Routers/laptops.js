@@ -17,15 +17,15 @@ router.get("/:id", (req, res) => {});
 // Creating One
 router.post("/", async (req, res) => {
   const laptop = new Laptop({
-    // modelName: req.body.modelName,
-    // brandName: req.body.brandName,
-    // price: req.body.price,
+    modelName: req.body.modelName,
+    brandName: req.body.brandName,
+    price: req.body.price,
   });
 
   try {
     const newLaptop = await laptop.save();
     res.status(201).json(newLaptop);
-  } catch (error) {
+  } catch (err) {
     res.status(400).json({ message: err.message });
   }
 });
@@ -34,6 +34,8 @@ router.post("/", async (req, res) => {
 router.patch("/:id", (req, res) => {});
 
 // Deleting One
-router.delete("/:id", (req, res) => {});
+router.delete("/:id", (req, res) => {
+  // How to delete a laptop from the database
+});
 
 module.exports = router;
