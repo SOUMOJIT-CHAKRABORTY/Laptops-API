@@ -11,8 +11,17 @@ router.get("/", async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+
 // Getting One
-router.get("/:id", (req, res) => {});
+router.get("/:id", async (req, res) => {
+  // How to get a single laptop from the database
+  try {
+    const laptop = await Laptop.findById(req.params.id);
+    res.send(laptop);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 
 // Creating One
 router.post("/", async (req, res) => {
